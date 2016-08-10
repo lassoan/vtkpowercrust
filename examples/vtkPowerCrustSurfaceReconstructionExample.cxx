@@ -50,17 +50,36 @@ int main ( int argc, char** argv )
       SurfaceReconstructor->SetEstimateR(0.6);
       SurfaceReconstructor->Update();
 
-      std::string OutFileName = "Output_";
-      std::ostringstream convert;
-      convert << i;
-      OutFileName.append ( convert.str() );
-      OutFileName.append ( ".ply" );
-      std::cout << "Writing: " << OutFileName << std::endl;
+      // Write reconstructed surface
+      {
+        std::string OutFileName = "OutputReconstructed_";
+        std::ostringstream convert;
+        convert << i;
+        OutFileName.append ( convert.str() );
+        OutFileName.append ( ".ply" );
+        std::cout << "Writing: " << OutFileName << std::endl;
 
-      vtkSmartPointer<vtkPLYWriter> PlyWriter = vtkSmartPointer<vtkPLYWriter>::New();
-      PlyWriter->SetFileName ( OutFileName.c_str() );
-      PlyWriter->SetInputData ( SurfaceReconstructor->GetOutput() );
-      PlyWriter->Write();
+        vtkSmartPointer<vtkPLYWriter> PlyWriter = vtkSmartPointer<vtkPLYWriter>::New();
+        PlyWriter->SetFileName ( OutFileName.c_str() );
+        PlyWriter->SetInputData ( SurfaceReconstructor->GetOutput() );
+        PlyWriter->Write();
+      }
+
+      // Write medial surface
+      {
+        std::string OutFileName = "OutputMedial_";
+        std::ostringstream convert;
+        convert << i;
+        OutFileName.append ( convert.str() );
+        OutFileName.append ( ".ply" );
+        std::cout << "Writing: " << OutFileName << std::endl;
+
+        vtkSmartPointer<vtkPLYWriter> PlyWriter = vtkSmartPointer<vtkPLYWriter>::New();
+        PlyWriter->SetFileName ( OutFileName.c_str() );
+        PlyWriter->SetInputData( SurfaceReconstructor->GetMedialSurface() );
+        PlyWriter->Write();
+      }
+
     }
 
   return 0;
