@@ -46,7 +46,8 @@ int main ( int argc, char** argv )
       std::cout << "Number of points " << PlyReader->GetOutput()->GetPoints()->GetNumberOfPoints() << std::endl;
 
       vtkSmartPointer<vtkPowerCrustSurfaceReconstruction> SurfaceReconstructor = vtkSmartPointer<vtkPowerCrustSurfaceReconstruction>::New();
-      SurfaceReconstructor->SetInput ( PlyReader->GetOutput() );
+      SurfaceReconstructor->SetInputData ( PlyReader->GetOutput() );
+      SurfaceReconstructor->SetEstimateR(0.6);
       SurfaceReconstructor->Update();
 
       std::string OutFileName = "Output_";
@@ -58,7 +59,7 @@ int main ( int argc, char** argv )
 
       vtkSmartPointer<vtkPLYWriter> PlyWriter = vtkSmartPointer<vtkPLYWriter>::New();
       PlyWriter->SetFileName ( OutFileName.c_str() );
-      PlyWriter->SetInput ( SurfaceReconstructor->GetOutput() );
+      PlyWriter->SetInputData ( SurfaceReconstructor->GetOutput() );
       PlyWriter->Write();
     }
 

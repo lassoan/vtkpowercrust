@@ -9,6 +9,3 @@ include ( ${VTK_USE_FILE} )
 
 add_executable ( vtkPowerCrustSurfaceReconstructionExample MACOSX_BUNDLE vtkPowerCrustSurfaceReconstructionExample.cxx ../vtkPowerCrustSurfaceReconstruction.cxx )
 target_link_libraries ( vtkPowerCrustSurfaceReconstructionExample ${VTK_LIBRARIES} )
-
-
-add_subdirectory ( data )

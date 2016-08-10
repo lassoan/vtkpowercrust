@@ -33,12 +33,12 @@
 #include "vtkPolyDataAlgorithm.h"
 #include "vtkSmartPointer.h"
 
-class VTK_GRAPHICS_EXPORT vtkPowerCrustSurfaceReconstruction : public vtkPolyDataAlgorithm
+class vtkPowerCrustSurfaceReconstruction : public vtkPolyDataAlgorithm
 {
 
 public:
   static vtkPowerCrustSurfaceReconstruction* New();
-  vtkTypeRevisionMacro ( vtkPowerCrustSurfaceReconstruction, vtkPolyDataAlgorithm );
+  vtkTypeMacro ( vtkPowerCrustSurfaceReconstruction, vtkPolyDataAlgorithm );
   void PrintSelf ( ostream& os, vtkIndent indent );
 
   // Description:

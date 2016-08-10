@@ -4442,7 +4442,6 @@ int vtkPowerCrustSurfaceReconstructionImpl::correct_orientation ( double *p1,dou
 
 //=====================================================================
 
-vtkCxxRevisionMacro ( vtkPowerCrustSurfaceReconstruction, "$Revision: 1.2 $" );
 vtkStandardNewMacro ( vtkPowerCrustSurfaceReconstruction );
 
 vtkPowerCrustSurfaceReconstruction::vtkPowerCrustSurfaceReconstruction()
